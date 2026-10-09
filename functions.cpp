@@ -4,20 +4,24 @@ using namespace std;
 
 
 // function declaration
-int calculateSum(vector<int> vec);
-int calculateMax(vector<int> vec);
-int calculateMin(vector<int> vec);
+int calculateSum(const vector<int> &vec);
+int calculateMax(const vector<int> &vec);
+int calculateMin(const vector<int> &vec);
 
 
-int main() 
-{
+int main() {
     vector<int> vec;
 
     cout << "fill the vector (use -1 to leave)" << endl;
     int n = 0;
     cin >> n;
-    while(n != -1)
-    {
+
+    if (n == -1) {
+        cout << "closing the program..." << endl;
+        return 0;
+    }
+    
+    while(n != -1 ) {
         vec.push_back(n);
         cin >> n;
     }
@@ -25,30 +29,37 @@ int main()
     cout << "Sum: " << calculateSum(vec) << endl;
     cout << "Max: " << calculateMax(vec) << endl;
     cout << "Min: " << calculateMin(vec) << endl;
+
+    return 0;
 }
 
 
 
 // function definition
-int calculateSum(vector<int> vec)
-{
+int calculateSum(const vector<int> &vec) {
     int sum = 0;
-   for (int i = 0; i < vec.size(); i++){sum += vec[i];}
+   for (int value: vec) {
+       sum += value;
+   }
    return sum;
 }
 
-int calculateMax(vector<int> vec)
-{
-    int max = vec[0];
-    for (int i = 0; i < vec.size(); i++)
-    { if (max < vec[i]) { max = vec[i]; } }
-    return max;
+int calculateMax(const vector<int> &vec) {
+    int maxVal = vec[0];
+    for (int value: vec) {
+        if (maxVal < value) {
+            maxVal = value; 
+        } 
+    }
+    return maxVal;
 }
 
-int calculateMin(vector<int> vec)
-{
-    int min = vec[0];
-    for (int i = 0; i < vec.size(); i++) 
-    { if (min > vec[i]) { min = vec[i];} }
-    return min;
+int calculateMin(const vector<int> &vec) {
+    int minVal = vec[0];
+    for (int value: vec) { 
+        if (minVal > value) {
+            minVal = value;
+        } 
+    }
+    return minVal;
 }
