@@ -16,14 +16,14 @@ int main() {
     int n = 0;
     cin >> n;
 
-    if (n == -1) {
-        cout << "closing the program..." << endl;
-        return 0;
-    }
-    
-    while(n != -1 ) {
+    while (n != -1) {
         vec.push_back(n);
         cin >> n;
+    }
+
+    if (vec.empty()) {
+        cout << "closing the program..." << endl;
+        return 0;
     }
 
     cout << "Sum: " << calculateSum(vec) << endl;
@@ -33,33 +33,31 @@ int main() {
     return 0;
 }
 
-
-
 // function definition
 int calculateSum(const vector<int> &vec) {
     int sum = 0;
-   for (int value: vec) {
-       sum += value;
-   }
-   return sum;
+    for (int value: vec) {
+        sum += value;
+    }
+    return sum;
 }
 
 int calculateMax(const vector<int> &vec) {
     int maxVal = vec[0];
     for (int value: vec) {
         if (maxVal < value) {
-            maxVal = value; 
-        } 
+            maxVal = value;
+        }
     }
     return maxVal;
 }
 
 int calculateMin(const vector<int> &vec) {
     int minVal = vec[0];
-    for (int value: vec) { 
+    for (int value: vec) {
         if (minVal > value) {
             minVal = value;
-        } 
+        }
     }
     return minVal;
 }
