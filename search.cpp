@@ -8,7 +8,7 @@ int binarySearch(const vector<int> &vec, const int value);
 int main() {
     vector<int> vec(1000);
 
-    for (int i = 0; i < 1000; i ++) {
+    for (int i = 0; i < 1000; i++) {
         vec[i] = i * 2;
     }
 
@@ -22,7 +22,7 @@ int main() {
         cout << "number found in position: " << linear_idx << endl;
     } else {
         cout << "number not found" << endl;
-    }        
+    }
 
 
     int binary_value  = -1;
@@ -53,26 +53,19 @@ int linearSearch(const vector<int> &vec, const int value) {
 int binarySearch(const vector<int> &vec, const int value) {
     int first = 0;
     int last = vec.size() - 1;
-    int middle = (first + last) / 2;
     int comparisons = 0;
 
-    for (size_t i = 0; i < vec.size(); i++) {
-        if (first > last) {
-            return -1;
-        }
+
+    while (first <= last) {
+        int middle = first + (last - first) / 2;
+        comparisons++;
         if (value == vec[middle]) {
             cout << "this search method made " << comparisons << " comparisons" << endl;
             return middle;
-        }
-        if (value < vec[middle]) {
+        } else if (value < vec[middle]) {
             last = middle - 1;
-            middle = (first + last) / 2;
-            comparisons++;
-        }
-        if (value > vec[middle]) {
+        } else if (value > vec[middle]) {
             first = middle + 1;
-            middle = (first + last) / 2;
-            comparisons++;
         }
     }
     return -1;
