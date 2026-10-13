@@ -55,7 +55,6 @@ int binarySearch(const vector<int> &vec, const int value) {
     int last = vec.size() - 1;
     int comparisons = 0;
 
-
     while (first <= last) {
         int middle = first + (last - first) / 2;
         comparisons++;
