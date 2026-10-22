@@ -5,6 +5,7 @@ using namespace std;
 void exchangeSort(vector<int> &vec);
 void selectionSort(vector<int> &vec);
 void insertionSort(vector<int> &vec);
+void change(int &x, int  &y); 
 
 int main() {
     vector<int> vec(1000);
@@ -19,7 +20,6 @@ int main() {
     }
     return 0;
 }
-
 
 void exchangeSort(vector<int> &vec) {
     int comparisons = 0;
@@ -36,28 +36,24 @@ void exchangeSort(vector<int> &vec) {
             comparisons++;
         }
     }
-    cout << "comparisons: " << comparisons <<endl;
-    cout << "swaps: " << swaps <<endl;
+    cout << "comparisons: " << comparisons << endl;
+    cout << "swaps: " << swaps << endl;
 }
-
 
 void selectionSort(vector<int> &vec) {
-    int comparisons = 0;
-    int swaps = 0;
-    int min_val = vec[0]; 
-    for(size_t i = 0; i < vec.size(); i++) {
-        for(size_t j = 1; j < vec.size(); j++) {
-            if(vec[i] > vec[j]) {
-                min_val = vec[j];
-                vec[j] = vec[i];
-                comparisons++;
+    for(size_t i = 0; i + 1 < vec.size(); i++) {
+        int minIdx = i;
+        for(size_t j = i + 1; j < vec.size(); j++) {
+            if(vec[minIdx] > vec[j]) {
+                minIdx = j;
             }
         }
-        swaps++;
-        vec[i] = min_val;
+        change(vec[minIdx], vec[i]);
     }
-    cout << "comparisons: " << comparisons <<endl;
-    cout << "swaps: " << swaps <<endl;
-
 }
 
+void change(int &x, int &y) {
+    int aux = x;
+    x = y;
+    y = aux;
+}
