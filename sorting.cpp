@@ -46,9 +46,10 @@ void selectionSort(vector<int> &vec) {
     int swaps = 0;
     int min_val = vec[0]; 
     for(size_t i = 0; i < vec.size(); i++) {
-        for(size_t j = 0; j < vec.size(); j++) {
-            if(i > j) {
-                min_val = j;
+        for(size_t j = 1; j < vec.size(); j++) {
+            if(vec[i] > vec[j]) {
+                min_val = vec[j];
+                vec[j] = vec[i];
                 comparisons++;
             }
         }
