@@ -5,7 +5,7 @@ using namespace std;
 void exchangeSort(vector<int> &vec);
 void selectionSort(vector<int> &vec);
 void insertionSort(vector<int> &vec);
-void change(int &x, int  &y); 
+void swapValues(int &x, int  &y); 
 
 int main() {
     vector<int> vec(1000);
@@ -44,15 +44,15 @@ void selectionSort(vector<int> &vec) {
     for(size_t i = 0; i + 1 < vec.size(); i++) {
         int minIdx = i;
         for(size_t j = i + 1; j < vec.size(); j++) {
-            if(vec[minIdx] > vec[j]) {
+            if(vec[j] < vec[minIdx]) {
                 minIdx = j;
             }
         }
-        change(vec[minIdx], vec[i]);
+        swapValues(vec[minIdx], vec[i]);
     }
 }
 
-void change(int &x, int &y) {
+void swapValues(int &x, int &y) {
     int aux = x;
     x = y;
     y = aux;
